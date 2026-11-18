@@ -1,0 +1,70 @@
+{
+  "manifest_version": "0.4",
+  "name": "npi-provider-mcp",
+  "display_name": "NPI Provider Lookup",
+  "version": "0.1.0",
+  "description": "US healthcare provider lookup and NPI verification from the CMS NPPES NPI Registry.",
+  "long_description": "US healthcare provider lookup and NPI verification from the official CMS NPPES NPI Registry API v2.1: NPI lookup, provider search, NPI check-digit validation and taxonomy codes. Public data, no API key needed.",
+  "author": {
+    "name": "santex85",
+    "url": "https://github.com/santex85"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/santex85/npi-provider-mcp"
+  },
+  "homepage": "https://github.com/santex85/npi-provider-mcp",
+  "support": "https://github.com/santex85/npi-provider-mcp/issues",
+  "license": "MIT",
+  "keywords": [
+    "npi",
+    "healthcare",
+    "nppes",
+    "provider",
+    "cms"
+  ],
+  "server": {
+    "type": "uv",
+    "entry_point": "src/server.py",
+    "mcp_config": {
+      "command": "uv",
+      "args": [
+        "run",
+        "--directory",
+        "${__dirname}",
+        "src/server.py"
+      ],
+      "env": {
+        "MCP_TRANSPORT": "stdio"
+      }
+    }
+  },
+  "tools": [
+    {
+      "name": "lookup_npi",
+      "description": "Get the full NPPES registry record for one 10-digit NPI (National Provider Identifier)."
+    },
+    {
+      "name": "search_providers",
+      "description": "Search US healthcare providers in the NPPES NPI Registry."
+    },
+    {
+      "name": "validate_npi",
+      "description": "Validate an NPI: format, check digit and registry status."
+    },
+    {
+      "name": "specialty_codes",
+      "description": "Find healthcare provider taxonomy (specialty) codes and descriptions by keyword, as used in the NPPES registry."
+    }
+  ],
+  "compatibility": {
+    "platforms": [
+      "darwin",
+      "linux",
+      "win32"
+    ],
+    "runtimes": {
+      "python": ">=3.10"
+    }
+  }
+}
