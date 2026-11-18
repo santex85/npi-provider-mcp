@@ -1,0 +1,10 @@
+version: 1
+name: npi-provider-mcp
+description: US healthcare provider lookup and NPI verification from the CMS NPPES NPI Registry (NPI lookup, provider search, NPI validation, taxonomy codes)
+runtime: python
+entry: src/server.py
+build:
+  install: pip install -r requirements.txt
+startCommand:
+  type: http
+  command: python src/server.py
